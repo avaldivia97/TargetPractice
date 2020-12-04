@@ -1,0 +1,22 @@
+
+#menu{
+    text-align: center;
+    position: relative;
+}
+
+#gameArea{
+    position: relative;
+    width: 1000px;
+    height: 750px;
+    background-color: black;
+}
+
+#target{
+    top: 375px;
+    left: 500px;
+    position: absolute;
+    border-radius: 50%;
+    background-color: red;
+    width: 100px;
+    height: 100px;
+}

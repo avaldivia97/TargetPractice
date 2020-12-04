@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Target Practice</title>
+    <link rel="stylesheet" href="target.css">
+</head>
+<body>
+    <div id="menu">
+    <h1>Target Practice</h1>
+    <input type="radio" id="5s" name="gameLength" checked>
+    <label for="5s">5s Test</label>
+    <input type="radio" id="15s" name="gameLength">
+    <label for="15s">15s Test</label>
+    <input type="radio" id="30s" name="gameLength">
+    <label for="30s">30s Test</label>
+    <input type="radio" id="60s" name="gameLength">
+    <label for="60s">60s Test</label> <br>
+    <input type="radio" id="easy" name="difficulty" checked>
+    <label for="easy">Easy</label>
+    <input type="radio" id="medium" name="difficulty">
+    <label for="medium">Medium</label>
+    <input type="radio" id="hard" name="difficulty">
+    <label for="hard">Hard</label> <br>
+    <button id="startButton">Start Game</button>
+    </div>
+    <div id="gameArea">
+        <div id="target"></div>
+    </div>
+</body>
+<script src="target.js"></script>
+</html>
