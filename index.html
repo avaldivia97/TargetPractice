@@ -9,21 +9,21 @@
 <body>
     <div id="menu">
     <h1>Target Practice</h1>
-    <h2>Timer: <span id="timer">5</span>s</h2>
-    <h3>Hits: <span id="hits">0</span> Clicks: <span id="clicks">0</span></h3>
-    <input type="radio" id="5s" name="gameLength" checked>
+    <h3>Timer: <span id="timer">5</span>s Difficulty: <span id="difficulty">Medium</span></h3>
+    Hits: <span id="hits">0</span> Clicks: <span id="clicks">0</span> <br>
+    <input type="radio" id="5s" name="gameLength" checked onclick="changeGameLength()">
     <label for="5s">5s Test</label>
-    <input type="radio" id="15s" name="gameLength">
+    <input type="radio" id="15s" name="gameLength" onclick="changeGameLength()">
     <label for="15s">15s Test</label>
-    <input type="radio" id="30s" name="gameLength">
+    <input type="radio" id="30s" name="gameLength" onclick="changeGameLength()">
     <label for="30s">30s Test</label>
-    <input type="radio" id="60s" name="gameLength">
+    <input type="radio" id="60s" name="gameLength" onclick="changeGameLength()">
     <label for="60s">60s Test</label> <br>
-    <input type="radio" id="easy" name="difficulty" checked>
+    <input type="radio" id="easy" name="difficulty" onclick="changeGameDifficulty()">
     <label for="easy">Easy</label>
-    <input type="radio" id="medium" name="difficulty">
+    <input type="radio" id="medium" name="difficulty" checked onclick="changeGameDifficulty()">
     <label for="medium">Medium</label>
-    <input type="radio" id="hard" name="difficulty">
+    <input type="radio" id="hard" name="difficulty" onclick="changeGameDifficulty()">
     <label for="hard">Hard</label> <br>
     </div>
     <div id="gameArea">
