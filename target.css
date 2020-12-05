@@ -9,14 +9,27 @@
     width: 1000px;
     height: 750px;
     background-color: black;
+    text-align: center;
+    margin: 0 auto;
 }
 
 #target{
-    top: 375px;
-    left: 500px;
+    top: 100px;
+    left: 100px;
     position: absolute;
     border-radius: 50%;
     background-color: red;
     width: 100px;
     height: 100px;
+    display: none;
+}
+
+#startButton{
+    top:325px;
+    left:450px;
+    position: absolute;
+    background-color: skyblue;
+    border-radius: 50%;
+    width:100px;
+    height:100px;
 }

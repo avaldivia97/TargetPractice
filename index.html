@@ -9,6 +9,8 @@
 <body>
     <div id="menu">
     <h1>Target Practice</h1>
+    <h2>Timer: <span id="timer">5</span>s</h2>
+    <h3>Hits: <span id="hits">0</span> Clicks: <span id="clicks">0</span></h3>
     <input type="radio" id="5s" name="gameLength" checked>
     <label for="5s">5s Test</label>
     <input type="radio" id="15s" name="gameLength">
@@ -23,9 +25,9 @@
     <label for="medium">Medium</label>
     <input type="radio" id="hard" name="difficulty">
     <label for="hard">Hard</label> <br>
-    <button id="startButton">Start Game</button>
     </div>
     <div id="gameArea">
+        <button id="startButton" onclick="startGame()">Start</button>
         <div id="target"></div>
     </div>
 </body>
