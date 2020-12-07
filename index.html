@@ -9,30 +9,61 @@
 <body>
     <div id="menu">
     <h1>Target Practice</h1>
-    <h3>Timer: <span id="timer">5</span>s Difficulty: <span id="difficulty">Medium</span></h3>
-    Hits: <span id="hits">0</span> Clicks: <span id="clicks">0</span> <br>
-    <input type="radio" id="timeLimit" name="gameType" checked>
+    
+    <h3> <div id="timerDiv">Timer: <span id="timer">5</span>s</div> <div id="stopwatchDiv" style="display: none;">Stopwatch: <span id="stopwatch">0</span>s </div> Difficulty: <span id="difficulty">Medium</span></h3>
+
+    <div id="settings">
+    Hits: <span id="hits">0</span> Clicks: <span id="clicks">0</span> <div id="targetsRemainingDiv">Targets Remaining: <span id="targetsRemaining">5</span></div><br>
+
+
+    <input type="radio" id="timeLimit" name="gameType" checked onclick="changeGameType()">
     <label for="timeLimit">Time Limit</label>
-    <input type="radio" id="speedRun" name="gameType">
+
+    <input type="radio" id="speedRun" name="gameType" onclick="changeGameType()">
     <label for="speedRun">Speed Run</label> <br>
+
+
+    <input type="radio" id="5targets" name="speedRunTotal" style="display: none;" checked onclick="changeSpeedRunTotal()">
+    <label for="5targets" id="5targetsLabel" style="display: none;">5 Targets</label>
+
+    <input type="radio" id="15targets" name="speedRunTotal" style="display: none;" onclick="changeSpeedRunTotal()">
+    <label for="15targets" id="15targetsLabel" style="display: none;">15 Targets</label>
+
+    <input type="radio" id="30targets" name="speedRunTotal" style="display: none;" onclick="changeSpeedRunTotal()">
+    <label for="30targets" id="30targetsLabel" style="display: none;">30 Targets</label>
+
+    <input type="radio" id="60targets" name="speedRunTotal" style="display: none;" onclick="changeSpeedRunTotal()">
+    <label for="60targets" id="60targetsLabel" style="display: none;">60 Targets</label>
+
+
     <input type="radio" id="5s" name="gameLength" checked onclick="changeGameLength()">
-    <label for="5s">5s Test</label>
+    <label for="5s" id="5sLabel">5s Test</label>
+
     <input type="radio" id="15s" name="gameLength" onclick="changeGameLength()">
-    <label for="15s">15s Test</label>
+    <label for="15s" id="15sLabel">15s Test</label>
+
     <input type="radio" id="30s" name="gameLength" onclick="changeGameLength()">
-    <label for="30s">30s Test</label>
+    <label for="30s" id="30sLabel">30s Test</label>
+
     <input type="radio" id="60s" name="gameLength" onclick="changeGameLength()">
-    <label for="60s">60s Test</label> <br>
+    <label for="60s" id="60sLabel">60s Test</label> <br>
+
+
     <input type="radio" id="easy" name="difficulty" onclick="changeGameDifficulty()">
     <label for="easy">Easy</label>
+
     <input type="radio" id="medium" name="difficulty" checked onclick="changeGameDifficulty()">
     <label for="medium">Medium</label>
+
     <input type="radio" id="hard" name="difficulty" onclick="changeGameDifficulty()">
     <label for="hard">Hard</label> <br>
+
+
+    </div>
     </div>
     <div id="gameArea">
         <button id="startButton" onclick="let game = new Game(gameLength, gameDifficulty); game.start()">Start</button>
-        <div id="target"></div>
+        <div id="target1"></div>
     </div>
 </body>
 <script src="target.js"></script>

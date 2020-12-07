@@ -1,7 +1,18 @@
-
 #menu{
     text-align: center;
     position: relative;
+}
+
+#settings{
+    position: relative;
+}
+
+#timerDiv{
+    display: inline;
+}
+
+#targetsRemainingDiv{
+    display: none;
 }
 
 #gameArea{
@@ -13,7 +24,7 @@
     margin: 0 auto;
 }
 
-#target{
+#target1{
     top: 100px;
     left: 100px;
     position: absolute;
