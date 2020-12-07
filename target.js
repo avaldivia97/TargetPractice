@@ -1,9 +1,7 @@
-let score;
-let totalHits = 0;
-let totalClicks = -1;
 let gameLength = 5;
 let gameDifficulty = "Medium";
-let gameOver = true;
+let totalHits = 0;
+let totalClicks = -1;
 let gameArea = document.getElementById('gameArea');
 let target = document.getElementById('target');
 let startButton = document.getElementById('startButton');
@@ -18,6 +16,72 @@ let sixtySeconds = document.getElementById("60s");
 let easy = document.getElementById("easy");
 let medium = document.getElementById("medium");
 let hard = document.getElementById("hard");
+
+class Game{
+    constructor(gameLength, gameDifficulty){
+        this.gameLength = gameLength;
+        this.gameDifficulty = gameDifficulty;
+        this.gameOver = true;
+    }
+    start(){
+        totalHits = 0;
+        totalClicks = -1;
+        hitsText.innerText = totalHits;
+        clicksText.innerText = 0;
+        gameArea.addEventListener('click', gameAreaClick);
+        target.addEventListener('click', targetClick);
+        hideElement(startButton);
+        this.gameOver = false;
+        easy.disabled = true; medium.disabled = true; hard.disabled = true;
+        fiveSeconds.disabled = true; fifteenSeconds.disabled = true; thirtySeconds.disabled = true; sixtySeconds.disabled = true;
+        newTargetCoords();
+        let startTime = new Date().getTime();
+        let timer = setInterval(()=>{
+            let timePassed = (new Date().getTime() - startTime) / 1000;
+            if (timePassed < this.gameLength){
+                timerText.innerText = (this.gameLength - timePassed).toFixed(3);
+            }
+            else{
+                this.gameOver = true;
+                clearInterval(timer);
+                this.end();
+            }
+        }, 1)
+    }
+    end(){
+        gameArea.removeEventListener('click', gameAreaClick);
+        target.removeEventListener('click', targetClick);
+        hideElement(target);
+        easy.disabled = false; medium.disabled = false; hard.disabled = false;
+        fiveSeconds.disabled = false; fifteenSeconds.disabled = false; thirtySeconds.disabled = false; sixtySeconds.disabled = false;
+        timerText.innerText = 0;
+        let accuracy;
+        let hitSpeed;
+        if (totalClicks === 0){
+            accuracy = 0;
+            hitSpeed = this.gameLength;
+        }
+        else{
+            accuracy = (totalHits/totalClicks * 100).toFixed(2);
+            hitSpeed = (this.gameLength/totalHits).toFixed(2);
+        }
+        setTimeout(()=>{alert(`In ${this.gameLength} seconds you hit ${totalHits} targets in ${totalClicks} clicks on ${this.gameDifficulty.toLowerCase()} difficulty.\nTotal accuracy: ${accuracy}%.\nAverage Reaction Time: ${hitSpeed}s\nPlay again to keep improving!`)})
+        showElement(startButton);
+    }
+}
+
+function gameAreaClick(){
+    totalClicks +=1;
+    console.log(totalClicks);
+    clicksText.innerText = totalClicks;
+}
+function targetClick(){
+    hideElement(target);
+    totalHits+=1;
+    console.log(totalHits);
+    hitsText.innerText = totalHits;
+    newTargetCoords();
+}
 
 function showElement(element){
     element.style.display = 'inline';
@@ -39,63 +103,6 @@ function newTargetCoords(){
     target.style.left = positionX + 'px';
     target.style.top = positionY + 'px';
     showElement(target);
-}
-
-function startGame(){
-    gameArea.addEventListener('click', gameAreaClick);
-    hideElement(startButton);
-    gameOver = false;
-    totalClicks = -1;
-    totalHits = 0;
-    hitsText.innerText = 0;
-    clicksText.innerText = 0;
-    easy.disabled = true; medium.disabled = true; hard.disabled = true;
-    fiveSeconds.disabled = true; fifteenSeconds.disabled = true; thirtySeconds.disabled = true; sixtySeconds.disabled = true;
-    newTargetCoords();
-    let startTime = new Date().getTime();
-    let timer = setInterval(()=>{
-        let timePassed = (new Date().getTime() - startTime) / 1000;
-        if (timePassed < gameLength){
-            timerText.innerText = (gameLength - timePassed).toFixed(3);
-        }
-        else{
-            gameOver = true;
-            clearInterval(timer);
-            endGame();
-        }
-    }, 1)
-}
-
-function endGame(){
-    gameArea.removeEventListener('click', gameAreaClick);
-    hideElement(target);
-    easy.disabled = false; medium.disabled = false; hard.disabled = false;
-    fiveSeconds.disabled = false; fifteenSeconds.disabled = false; thirtySeconds.disabled = false; sixtySeconds.disabled = false;
-    timerText.innerText = 0;
-    let accuracy;
-    let hitSpeed;
-    if (totalClicks === 0){
-        accuracy = 0;
-        hitSpeed = gameLength;
-    }
-    else {
-        accuracy = (totalHits/totalClicks * 100).toFixed(2);
-        hitSpeed = (gameLength/totalHits).toFixed(2);
-    }
-    setTimeout(()=>{alert(`In ${gameLength} seconds you hit ${totalHits} targets in ${totalClicks} clicks on ${gameDifficulty.toLowerCase()} difficulty.\nTotal accuracy: ${accuracy}%.\nAverage Reaction Time: ${hitSpeed}s\nPlay again to keep improving!`)})
-    showElement(startButton);
-}
-
-target.addEventListener('click', ()=>{
-    hideElement(target);
-    totalHits+=1;
-    hitsText.innerText = totalHits;
-    newTargetCoords();
-});
-
-function gameAreaClick(){
-    totalClicks+=1;
-    clicksText.innerText = totalClicks;
 }
 
 function changeGameLength(){
@@ -129,14 +136,6 @@ function changeGameDifficulty(){
         gameDifficulty = "Hard";
         changeStatsText(gameLength, gameDifficulty);
     }
-}
-
-function stopWatch(){
-
-}
-
-function timer(seconds){
-
 }
 
 function changeStatsText(time, difficulty){

@@ -11,6 +11,10 @@
     <h1>Target Practice</h1>
     <h3>Timer: <span id="timer">5</span>s Difficulty: <span id="difficulty">Medium</span></h3>
     Hits: <span id="hits">0</span> Clicks: <span id="clicks">0</span> <br>
+    <input type="radio" id="timeLimit" name="gameType" checked>
+    <label for="timeLimit">Time Limit</label>
+    <input type="radio" id="speedRun" name="gameType">
+    <label for="speedRun">Speed Run</label> <br>
     <input type="radio" id="5s" name="gameLength" checked onclick="changeGameLength()">
     <label for="5s">5s Test</label>
     <input type="radio" id="15s" name="gameLength" onclick="changeGameLength()">
@@ -27,7 +31,7 @@
     <label for="hard">Hard</label> <br>
     </div>
     <div id="gameArea">
-        <button id="startButton" onclick="startGame()">Start</button>
+        <button id="startButton" onclick="let game = new Game(gameLength, gameDifficulty); game.start()">Start</button>
         <div id="target"></div>
     </div>
 </body>
