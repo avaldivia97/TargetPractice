@@ -179,8 +179,8 @@ function newTargetCoords(element){
     if (positionX > 1900-(parseInt(element.style.width, 10))){
         positionX-= (parseInt(element.style.width, 10));
     }
-    let positionY = (Math.random()* 800).toFixed();
-    if (positionY > 800-(parseInt(element.style.width, 10))){
+    let positionY = (Math.random()* 935).toFixed();
+    if (positionY > 935-(parseInt(element.style.width, 10))){
         positionY-= (parseInt(element.style.width, 10));
     }
     element.style.left = positionX + 'px';
