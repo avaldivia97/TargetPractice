@@ -7,6 +7,10 @@
     position: relative;
 }
 
+.radioButton{
+    padding-left: 10%;
+}
+
 #timerDiv{
     display: inline;
 }
