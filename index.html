@@ -4,23 +4,83 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Target Practice</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <link rel="stylesheet" href="target.css">
 </head>
 <body>
-    <div id="menu">
-    <h1>Target Practice</h1>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Target Practice &thinsp;<div id="timerDiv">Timer: <span id="timer">5</span>s</div> <div id="stopwatchDiv" style="display: none;">Stopwatch: <span id="stopwatch">0</span>s </div> &thinsp; Difficulty: <span id="difficulty">Medium</span> &thinsp;
+            Hits: <span id="hits">0</span> &thinsp;Clicks: <span id="clicks">0</span> <div id="targetsRemainingDiv">&thinsp;Targets Remaining: <span id="targetsRemaining">5</span></div></a>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Game Type
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <li><input type="radio" id="timeLimit" name="gameType" checked onclick="changeGameType()">
+                        <label for="timeLimit">Time Limit</label></li>
+                      <li><input type="radio" id="speedRun" name="gameType" onclick="changeGameType()">
+                        <label for="speedRun">Speed Run</label></li>
+                    </ul>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Parameter
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <li><input type="radio" id="5targets" name="speedRunTotal" style="display: none;" checked onclick="changeSpeedRunTotal()">
+                        <label for="5targets" id="5targetsLabel" style="display: none;">5 Targets</label></li>
+                      <li><input type="radio" id="15targets" name="speedRunTotal" style="display: none;" onclick="changeSpeedRunTotal()">
+                        <label for="15targets" id="15targetsLabel" style="display: none;">15 Targets</label></li>
+                      <li><input type="radio" id="30targets" name="speedRunTotal" style="display: none;" onclick="changeSpeedRunTotal()">
+                        <label for="30targets" id="30targetsLabel" style="display: none;">30 Targets</label></li>
+                      <li><input type="radio" id="60targets" name="speedRunTotal" style="display: none;" onclick="changeSpeedRunTotal()">
+                        <label for="60targets" id="60targetsLabel" style="display: none;">60 Targets</label></li>
+                      <li><input type="radio" id="5s" name="gameLength" checked onclick="changeGameLength()">
+                        <label for="5s" id="5sLabel">5s Test</label></li>
+                      <li><input type="radio" id="15s" name="gameLength" onclick="changeGameLength()">
+                        <label for="15s" id="15sLabel">15s Test</label></li>
+                      <li><input type="radio" id="30s" name="gameLength" onclick="changeGameLength()">
+                        <label for="30s" id="30sLabel">30s Test</label></li>
+                      <li><input type="radio" id="60s" name="gameLength" onclick="changeGameLength()">
+                        <label for="60s" id="60sLabel">60s Test</label></li>
+                    </ul>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Difficulty
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <li><input type="radio" id="easy" name="difficulty" onclick="changeGameDifficulty()">
+                        <label for="easy">Easy</label></li>
+                      <li><input type="radio" id="medium" name="difficulty" checked onclick="changeGameDifficulty()">
+                        <label for="medium">Medium</label></li>
+                      <li><input type="radio" id="hard" name="difficulty" onclick="changeGameDifficulty()">
+                        <label for="hard">Hard</label></li>
+                    </ul>
+                  </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+    <!-- <div id="menu">
+    <h1>Target Practice</h1> 
     
-    <h3> <div id="timerDiv">Timer: <span id="timer">5</span>s</div> <div id="stopwatchDiv" style="display: none;">Stopwatch: <span id="stopwatch">0</span>s </div> Difficulty: <span id="difficulty">Medium</span></h3>
+    <h3><div id="timerDiv">Timer: <span id="timer">5</span>s</div> <div id="stopwatchDiv" style="display: none;">Stopwatch: <span id="stopwatch">0</span>s </div> Difficulty: <span id="difficulty">Medium</span></h3>
 
     <div id="settings">
-    Hits: <span id="hits">0</span> Clicks: <span id="clicks">0</span> <div id="targetsRemainingDiv">Targets Remaining: <span id="targetsRemaining">5</span></div><br>
+        Hits: <span id="hits">0</span> Clicks: <span id="clicks">0</span> <div id="targetsRemainingDiv">Targets Remaining: <span id="targetsRemaining">5</span></div><br>
 
 
     <input type="radio" id="timeLimit" name="gameType" checked onclick="changeGameType()">
     <label for="timeLimit">Time Limit</label>
 
     <input type="radio" id="speedRun" name="gameType" onclick="changeGameType()">
-    <label for="speedRun">Speed Run</label> <br>
+    <label for="speedRun">Speed Run</label><br> 
 
 
     <input type="radio" id="5targets" name="speedRunTotal" style="display: none;" checked onclick="changeSpeedRunTotal()">
@@ -56,15 +116,16 @@
     <label for="medium">Medium</label>
 
     <input type="radio" id="hard" name="difficulty" onclick="changeGameDifficulty()">
-    <label for="hard">Hard</label> <br>
+    <label for="hard">Hard</label> <br> 
 
 
     </div>
-    </div>
+    </div> -->
     <div id="gameArea">
         <button id="startButton" onclick="let game = new Game(gameLength, gameDifficulty); game.start()">Start</button>
         <div id="target1"></div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 </body>
 <script src="target.js"></script>
 </html>

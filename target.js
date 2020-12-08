@@ -157,6 +157,7 @@ function gameAreaClick(){
 }
 function targetClick(){
     hideElement(target1);
+    playAudio('sounds/ding.wav');
     totalHits+=1;
     hitsText.innerText = totalHits;
     if(gameType ==="speedRun"){
@@ -179,8 +180,8 @@ function newTargetCoords(element){
     if (positionX > 1900-(parseInt(element.style.width, 10))){
         positionX-= (parseInt(element.style.width, 10));
     }
-    let positionY = (Math.random()* 800).toFixed();
-    if (positionY > 800-(parseInt(element.style.width, 10))){
+    let positionY = (Math.random()* 935).toFixed();
+    if (positionY > 935-(parseInt(element.style.width, 10))){
         positionY-= (parseInt(element.style.width, 10));
     }
     element.style.left = positionX + 'px';
@@ -288,4 +289,8 @@ function changeSpeedRunTotal(){
         speedRunTotal = 60;
         targetsRemaining.innerText = speedRunTotal;
     }
+}
+
+function playAudio(url){
+    new Audio(url).play();
 }
