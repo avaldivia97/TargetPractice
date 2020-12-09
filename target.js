@@ -131,6 +131,7 @@ class Game{
         totalClicks = -1;
         hitsText.innerText = totalHits;
         clicksText.innerText = 0;
+        changeTargetSize(gameDifficulty, target1)
         gameArea.addEventListener('click', gameAreaClick);
         target1.addEventListener('click', targetClick);
         hideElement(startButton);
@@ -181,6 +182,7 @@ function hideElement(element){
 
 function newTargetCoords(element){
     let positionX = (Math.random()* (1900-parseInt(element.style.width, 10))).toFixed();
+    console.log(element.style.width);
     // if (positionX > 1900-(parseInt(element.style.width, 10))){
     //     positionX-= (parseInt(element.style.width, 10));
     // }
