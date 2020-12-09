@@ -1,5 +1,6 @@
 let gameLength = 5;
 let speedRunTotal = 5;
+let speedRunTotalDisplay = 5;
 let gameType = "timeLimit";
 let gameDifficulty = "Medium";
 let numTargets = 1;
@@ -19,6 +20,7 @@ let clicksText = document.getElementById("clicks");
 let difficultyText = document.getElementById("difficulty");
 let targetsRemainingDiv = document.getElementById("targetsRemainingDiv");
 let targetsRemaining = document.getElementById("targetsRemaining");
+let gameTypeText = document.getElementById("gameTypeDisplay");
 
 
 let timeLimit = document.getElementById("timeLimit");
@@ -46,6 +48,8 @@ let easy = document.getElementById("easy");
 let medium = document.getElementById("medium");
 let hard = document.getElementById("hard");
 
+let soundToggle = document.getElementById("soundToggle");
+
 class Game{
     constructor(gameLength, gameDifficulty){
         this.gameLength = gameLength;
@@ -72,7 +76,7 @@ class Game{
 
         if (gameType === "speedRun"){
             this.initGame();
-            targetsRemaining.innerText = speedRunTotal;
+            targetsRemaining.innerText = speedRunTotalDisplay;
             newTargetCoords(target1);
             console.log(1);
             let startTime = new Date().getTime();
@@ -157,12 +161,14 @@ function gameAreaClick(){
 }
 function targetClick(){
     hideElement(target1);
-    playAudio('sounds/ding.wav');
+    if (soundToggle.checked){
+        playAudio('sounds/ding.wav');
+    }
     totalHits+=1;
     hitsText.innerText = totalHits;
     if(gameType ==="speedRun"){
         speedRunTotal-=1;
-        targetsRemaining.innerText = speedRunTotal;
+        // targetsRemaining.innerText = speedRunTotalDisplay;
     }
     newTargetCoords(target1);
 }
@@ -234,18 +240,18 @@ function changeStatsText(time, difficulty){
 function changeTargetSize(difficulty, element){
     if (difficulty === "Easy")
     {
-        element.style.width = "200px";
-        element.style.height = "200px";
+        element.style.width = "250px";
+        element.style.height = "250px";
     }
     if (difficulty === "Medium")
     {
-        element.style.width = "100px";
-        element.style.height = "100px";
+        element.style.width = "175px";
+        element.style.height = "175px";
     }
     if (difficulty === "Hard")
     {
-        element.style.width = "50px";
-        element.style.height = "50px";
+        element.style.width = "100px";
+        element.style.height = "100px";
     }
 }
 
@@ -259,6 +265,7 @@ function changeGameType(){
         showElement(fiveSeconds); showElement(fifteenSeconds); showElement(thirtySeconds); showElement(sixtySeconds);
         showElement(fiveSecondsLabel); showElement (fifteenSecondsLabel); showElement(thirtySecondsLabel); showElement(sixtySecondsLabel);
         gameType = "timeLimit"
+        gameTypeText.innerText = "Time Limit";
     }
     if (speedRun.checked){
         hideElement(timerDiv);
@@ -269,25 +276,30 @@ function changeGameType(){
         showElement(fiveTargets); showElement(fifteenTargets); showElement(thirtyTargets); showElement(sixtyTargets);
         showElement(fiveTargetsLabel); showElement(fifteenTargetsLabel); showElement(thirtyTargetsLabel); showElement(sixtyTargetsLabel);
         gameType = "speedRun"
+        gameTypeText.innerText = "Speed Run";
     }
 }
 
 function changeSpeedRunTotal(){
     if (fiveTargets.checked){
         speedRunTotal = 5;
-        targetsRemaining.innerText = speedRunTotal;
+        speedRunTotalDisplay = 5;
+        targetsRemaining.innerText = speedRunTotalDisplay;
     }
     if (fifteenTargets.checked){
         speedRunTotal = 15;
-        targetsRemaining.innerText = speedRunTotal;
+        speedRunTotalDisplay = 15;
+        targetsRemaining.innerText = speedRunTotalDisplay;
     }
     if (thirtyTargets.checked){
         speedRunTotal = 30;
-        targetsRemaining.innerText = speedRunTotal;
+        speedRunTotalDisplay = 30;
+        targetsRemaining.innerText = speedRunTotalDisplay;
     }
     if (sixtyTargets.checked){
         speedRunTotal = 60;
-        targetsRemaining.innerText = speedRunTotal;
+        speedRunTotalDisplay = 60;
+        targetsRemaining.innerText = speedRunTotalDisplay;
     }
 }
 

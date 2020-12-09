@@ -15,8 +15,43 @@
     display: inline;
 }
 
+#timerHeader{
+    font-weight: bold;
+}
+
+#stopwatchHeader{
+    font-weight: bold;
+}
+
+#difficultyHeader{
+    font-weight: bold;
+}
+
+#hitsHeader{
+    font-weight: bold;
+}
+
+#clicksHeader{
+    font-weight: bold;
+}
+
+#gameTypeHeader{
+    font-weight: bold;
+}
+
 #targetsRemainingDiv{
     display: none;
+}
+
+#gameTypeDisplay{
+    display: inline;
+}
+
+#brandDisplay{
+    display: inline;
+    font-size: 1.25em;
+    font-weight: bold;
+    color: blue;
 }
 
 #gameArea{
@@ -34,6 +69,8 @@
     position: absolute;
     border-radius: 50%;
     background-color: red;
+    border-style: solid;
+    border-color: white;
     width: 100px;
     height: 100px;
     display: none;
@@ -43,9 +80,79 @@
     top:300px;
     left:850px;
     font-size: 2em;
+    color: white;
+    border-style: solid;
+    border-color: white;
     position: absolute;
-    background-color: skyblue;
+    background-color: blue;
+    font-weight: bold;
     border-radius: 50%;
     width:200px;
     height:200px;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 30px;
+    height: 17px;
+  }
+  
+  /* Hide default HTML checkbox */
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  /* The slider */
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 13px;
+    width: 13px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  input:checked + .slider {
+    background-color: blue;
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px  blue;
+  }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(13px);
+    -ms-transform: translateX(13px);
+    transform: translateX(13px);
+  }
+
+  .slider.round {
+    border-radius: 17px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }
+
+#sound{
+    display: flex;
+    align-items: center;
 }
