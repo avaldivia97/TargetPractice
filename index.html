@@ -11,8 +11,8 @@
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">Target Practice &thinsp;<div id="timerDiv">Timer: <span id="timer">5</span>s</div> <div id="stopwatchDiv" style="display: none;">Stopwatch: <span id="stopwatch">0</span>s </div> &thinsp; Difficulty: <span id="difficulty">Medium</span> &thinsp;
-            Hits: <span id="hits">0</span> &thinsp;Clicks: <span id="clicks">0</span> <div id="targetsRemainingDiv">&thinsp;Targets Remaining: <span id="targetsRemaining">5</span></div></a>
+          <a class="navbar-brand" href="#"> <div id="brandDisplay">Target Practice</div> &thinsp; <span id="gameTypeHeader">Game Type:</span> <div id="gameTypeDisplay">Time Limit</div> &thinsp;<div id="timerDiv"> <span id="timerHeader">Timer:</span> <span id="timer">5</span>s</div> <div id="stopwatchDiv" style="display: none;"> <span id="stopwatchHeader">Stopwatch:</span> <span id="stopwatch">0</span>s </div> &thinsp;  <span id="difficultyHeader">Difficulty:</span> <span id="difficulty">Medium</span> &thinsp;
+           <span id="hitsHeader">Hits:</span> <span id="hits">0</span> <div id="targetsRemainingDiv">/ <span id="targetsRemaining">5</span></div> &thinsp; <span id="clicksHeader">Clicks:</span> <span id="clicks">0</span></a>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item dropdown">
@@ -61,6 +61,13 @@
                       <li class="radioButton"><input type="radio" id="hard" name="difficulty" onclick="changeGameDifficulty()">
                         <label for="hard">Hard</label></li>
                     </ul>
+                  </li>
+                  <li class="nav-item" id="sound">
+                    <span id="soundEffectDisplay">Sound Effect&thinsp;&thinsp;</span>
+                    <label class="switch" for="soundToggle">
+                      <input id="soundToggle" type="checkbox" checked>
+                      <span class="slider round"></span>
+                    </label>
                   </li>
             </ul>
           </div>
