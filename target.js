@@ -78,9 +78,7 @@ class Game{
             this.initGame();
             targetsRemaining.innerText = speedRunTotalDisplay;
             newTargetCoords(target1);
-            console.log(1);
             let startTime = new Date().getTime();
-            console.log(2);
             let stopwatch = setInterval(()=>{
                 let timePassed = (new Date().getTime() - startTime) / 1000;
                 if (speedRunTotal !== 0)
@@ -182,14 +180,14 @@ function hideElement(element){
 }
 
 function newTargetCoords(element){
-    let positionX = (Math.random()* 1900).toFixed();
-    if (positionX > 1900-(parseInt(element.style.width, 10))){
-        positionX-= (parseInt(element.style.width, 10));
-    }
-    let positionY = (Math.random()* 935).toFixed();
-    if (positionY > 935-(parseInt(element.style.width, 10))){
-        positionY-= (parseInt(element.style.width, 10));
-    }
+    let positionX = (Math.random()* (1900-parseInt(element.style.width, 10))).toFixed();
+    // if (positionX > 1900-(parseInt(element.style.width, 10))){
+    //     positionX-= (parseInt(element.style.width, 10));
+    // }
+    let positionY = (Math.random()* (935-parseInt(element.style.width, 10))).toFixed();
+    // if (positionY > 935-(parseInt(element.style.width, 10))){
+    //     positionY-= (parseInt(element.style.width, 10));
+    // }
     element.style.left = positionX + 'px';
     element.style.top = positionY + 'px';
     showElement(element);
