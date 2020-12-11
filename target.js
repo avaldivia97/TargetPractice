@@ -181,12 +181,12 @@ function hideElement(element){
 }
 
 function newTargetCoords(element){
-    let positionX = (Math.random()* (1900-parseInt(element.style.width, 10))).toFixed();
+    let positionX = (Math.random()* (1000-parseInt(element.style.width, 10))).toFixed();
     console.log(element.style.width);
     // if (positionX > 1900-(parseInt(element.style.width, 10))){
     //     positionX-= (parseInt(element.style.width, 10));
     // }
-    let positionY = (Math.random()* (935-parseInt(element.style.width, 10))).toFixed();
+    let positionY = (Math.random()* (800-parseInt(element.style.width, 10))).toFixed();
     // if (positionY > 935-(parseInt(element.style.width, 10))){
     //     positionY-= (parseInt(element.style.width, 10));
     // }

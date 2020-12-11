@@ -56,8 +56,8 @@
 
 #gameArea{
     position: relative;
-    width: 1900px;
-    height: 935px;
+    width: 1000px;
+    height: 800px;
     background-color: black;
     text-align: center;
     margin: 0 auto;
@@ -77,8 +77,8 @@
 }
 
 #startButton{
-    top:300px;
-    left:850px;
+    top:200px;
+    left:400px;
     font-size: 2em;
     color: white;
     border-style: solid;
