@@ -181,12 +181,11 @@ function hideElement(element){
 }
 
 function newTargetCoords(element){
-    let positionX = (Math.random()* (1000-parseInt(element.style.width, 10))).toFixed();
-    console.log(element.style.width);
+    let positionX = (Math.random()* (screen.width - 100 - parseInt(element.style.width, 10))).toFixed();
     // if (positionX > 1900-(parseInt(element.style.width, 10))){
     //     positionX-= (parseInt(element.style.width, 10));
     // }
-    let positionY = (Math.random()* (800-parseInt(element.style.width, 10))).toFixed();
+    let positionY = (Math.random()* (screen.height - 200 - parseInt(element.style.width, 10))).toFixed();
     // if (positionY > 935-(parseInt(element.style.width, 10))){
     //     positionY-= (parseInt(element.style.width, 10));
     // }
@@ -305,4 +304,11 @@ function changeSpeedRunTotal(){
 
 function playAudio(url){
     new Audio(url).play();
+}
+
+function setGameArea(){
+    gameArea.style.width = (screen.width - 100) + 'px';
+    gameArea.style.height = (screen.height - 200) + 'px';
+    startButton.style.left = (screen.width - 100) / 2 - 100 + 'px';
+    startButton.style.top = (screen.height - 200) / 2 - 200 + 'px';
 }
